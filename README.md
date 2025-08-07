@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website - Muhammad Jundan Jauhar
 
-## Getting Started
+Portfolio website profesional untuk keperluan pendaftaran magang, dibuat dengan Next.js dan Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Design** - Desain yang clean dan profesional
+- **Responsive Layout** - Tampilan yang optimal di semua device
+- **Modular Components** - Struktur kode yang rapi dan mudah dipelihara
+- **TypeScript** - Type safety untuk development yang lebih aman
+- **Interactive Elements** - Tombol dan link yang responsif
+
+## 📋 Sections
+
+- **Header** - Informasi personal dan foto profil
+- **Contact Info** - Email, GitHub, dan LinkedIn
+- **Personal Data** - Data diri lengkap
+- **Education** - Riwayat pendidikan
+- **Skills** - Keahlian teknis dengan progress indicators
+- **Organization Experience** - Pengalaman organisasi
+- **Project Portfolio** - Portfolio proyek yang telah dikerjakan
+- **Certificates** - Sertifikat dan prestasi
+- **Language Skills** - Kemampuan bahasa
+- **Motivation** - Motivasi untuk magang
+
+## 🛠️ Tech Stack
+
+- **Next.js 15** - React framework dengan App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **React** - UI library
+
+## 🚀 Getting Started
+
+1. Clone repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/JundanJauhar/portfolio-website.git
+cd portfolio-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 📝 Customization
 
-To learn more about Next.js, take a look at the following resources:
+Untuk mengubah konten portfolio, edit file `src/data/portfolioData.ts` dengan data pribadi Anda.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 Live Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Website ini dapat diakses di: [Portfolio Muhammad Jundan Jauhar](https://your-deployment-url.vercel.app)
 
-## Deploy on Vercel
+## 📧 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email**: jundan87@gmail.com
+- **GitHub**: [JundanJauhar](https://github.com/JundanJauhar)
+- **LinkedIn**: [Jundan Jauhar](https://www.linkedin.com/in/jundan-jauhar-04a666259/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+⭐ **Star this repository if you found it helpful!**
