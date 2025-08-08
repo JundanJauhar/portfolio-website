@@ -20,8 +20,8 @@ export default function Certificates({ certificates }: CertificatesProps) {
       </h2>
       <div className="space-y-3 ">
         {certificates.map((cert, index) => (
-          <div key={index} className=" justify-between items-center py-2 border-b border-gray-100 flex   bg-gray-50 rounded-lg p-4">
-            <div className='flex justify-center items-center mr-4'>
+          <div key={index} className=" justify-between items-center py-2 border-b border-gray-100 flex md:flex-row flex-col   bg-gray-50 rounded-lg p-4">
+            <div className='flex justify-center items-center mr-4 my-5'>
               <Image width={500} height={500} src={cert.img} alt={cert.name} className="w-full - h-full object-cover rounded-md" />
             </div>
             <div className=" flex-row md:flex-row justify-between items-start md:items-center w-full">
