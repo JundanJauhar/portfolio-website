@@ -1,7 +1,11 @@
+import { describe } from "node:test";
+
 // Data untuk halaman portfolio
 export const userData = {
   name: "Muhammad Jundan Jauhar",
-  title: "Mahasiswa Teknik Informatika",
+  title: "Universitas Islam Indonesia",
+  subtitle: "Teknik Informatika",
+  img: "/Jundan.jpg" 
 };
 
 export const contactData = {
@@ -73,18 +77,24 @@ export const projectsData = [
     description: "Aplikasi mobile untuk penukaran botol bekas dan mendapatkan poin dari setiap penukaran botol dan bisa digunakan untuk membeli produk yang tersedia di aplikasi",
     technologies: ["Kotlin"],
     link: "https://github.com/JundanJauhar/EcoMama"
+  },
+  {
+    title: "Portofolio Website",
+    description: "website portofolio pribadi yang menampilkan informasi tentang diri saya, proyek yang telah saya kerjakan, dan cara untuk menghubungi saya.",
+    technologies: ["next.js", "React", "Tailwind CSS"],
+    link: "https://github.com/JundanJauhar/portfolio-website"
   }
 ];
 
 export const certificatesData = [
-  { name: "Sertifikat Kelas Belajar Next.js dengan Headless CMS", year: "2025" },
-  { name: "Sertifikat Kelas Belajar ReactJS", year: "2024" },
-  { name: "Sertifikat Kelas Belajar Dasar HTML", year: "2023" }
+  { name: "Sertifikat Kelas Belajar Next.js dengan Headless CMS", year: "2025" ,img:"/nextJs-sertifikat.jpg", describe: "Sertifikat ini diberikan setelah menyelesaikan kelas Next.js dengan Headless CMS, yang mencakup pembuatan aplikasi web dinamis menggunakan Next.js dan integrasi dengan sistem manajemen konten headless." },
+  { name: "Sertifikat Kelas Belajar ReactJS", year: "2024", img: "/reactJs-sertifikat.jpg" , describe:"Sertifikat ini diberikan setelah menyelesaikan kelas ReactJS, yang mencakup pembuatan aplikasi web interaktif menggunakan React." },
+  { name: "Sertifikat Kelas Belajar Dasar HTML", year: "2023", img: "/html-sertifikat.jpg", describe: "Sertifikat ini diberikan setelah menyelesaikan kelas dasar HTML, yang mencakup pembuatan struktur dasar halaman web menggunakan HTML." }
 ];
 
 export const languagesData = [
   { name: "Bahasa Indonesia", level: "Native" },
-  { name: "Bahasa Inggris", level: "beginner" }
+  { name: "Bahasa Inggris", level: "Basic" }
 ];
 
 export const motivationText = `

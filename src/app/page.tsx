@@ -26,10 +26,6 @@ import {
 } from "../data/portfolioData";
 
 export default function Portfolio() {
-  const handleDownloadCV = () => {
-    // Implementasi download CV
-    alert("Fitur download CV akan diimplementasikan");
-  };
 
   const handleContact = () => {
     // Implementasi kontak
@@ -38,7 +34,7 @@ export default function Portfolio() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header Section */}
         <Header user={userData} />
 
@@ -72,7 +68,7 @@ export default function Portfolio() {
         </div>
 
         {/* Footer */}
-        <Footer onDownloadCV={handleDownloadCV} onContact={handleContact} />
+        <Footer  onContact={handleContact} />
       </div>
     </main>
   );
