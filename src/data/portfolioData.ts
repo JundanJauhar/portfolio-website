@@ -3,7 +3,7 @@ export const userData = {
   name: "Muhammad Jundan Jauhar",
   title: "Universitas Islam Indonesia",
   subtitle: "Teknik Informatika",
-  img: "/Jundan.jpg" 
+  img: "/Jundan.JPG" 
 };
 
 export const contactData = {
