@@ -1,5 +1,3 @@
-import { describe } from "node:test";
-
 // Data untuk halaman portfolio
 export const userData = {
   name: "Muhammad Jundan Jauhar",
@@ -35,7 +33,9 @@ export const educationData = [
   },
   {
     institution: "MAS Sunan Pandanaran",
+    degree: "IPA", 
     period: "2019 - 2022",
+    grade: "Lulus"
   }
 ];
 
@@ -91,9 +91,24 @@ export const projectsData = [
 ];
 
 export const certificatesData = [
-  { name: "Sertifikat Kelas Belajar Next.js dengan Headless CMS", year: "2025" ,img:"/nextJs-sertifikat.jpg", describe: "Sertifikat ini diberikan setelah menyelesaikan kelas Next.js dengan Headless CMS, yang mencakup pembuatan aplikasi web dinamis menggunakan Next.js dan integrasi dengan sistem manajemen konten headless." },
-  { name: "Sertifikat Kelas Belajar ReactJS", year: "2024", img: "/reactJs-sertifikat.jpg" , describe:"Sertifikat ini diberikan setelah menyelesaikan kelas ReactJS, yang mencakup pembuatan aplikasi web interaktif menggunakan React." },
-  { name: "Sertifikat Kelas Belajar Dasar HTML", year: "2023", img: "/html-sertifikat.jpg", describe: "Sertifikat ini diberikan setelah menyelesaikan kelas dasar HTML, yang mencakup pembuatan struktur dasar halaman web menggunakan HTML." }
+  { 
+    name: "Sertifikat Kelas Belajar Next.js dengan Headless CMS", 
+    year: "2025",
+    img: "/nextJs-sertifikat.jpg", 
+    describe: "Sertifikat ini diberikan setelah menyelesaikan kelas Next.js dengan Headless CMS, yang mencakup pembuatan aplikasi web dinamis menggunakan Next.js dan integrasi dengan sistem manajemen konten headless." 
+  },
+  { 
+    name: "Sertifikat Kelas Belajar ReactJS", 
+    year: "2024", 
+    img: "/reactJs-sertifikat.jpg", 
+    describe: "Sertifikat ini diberikan setelah menyelesaikan kelas ReactJS, yang mencakup pembuatan aplikasi web interaktif menggunakan React." 
+  },
+  { 
+    name: "Sertifikat Kelas Belajar Dasar HTML", 
+    year: "2023", 
+    img: "/html-sertifikat.jpg", 
+    describe: "Sertifikat ini diberikan setelah menyelesaikan kelas dasar HTML, yang mencakup pembuatan struktur dasar halaman web menggunakan HTML." 
+  }
 ];
 
 export const languagesData = [
