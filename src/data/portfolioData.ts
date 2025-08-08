@@ -10,7 +10,7 @@ export const userData = {
 
 export const contactData = {
   email: "jundan87@gmail.com",
-  phone: "0812-3456-7890",
+  phone: "0812-1551-0614",
   linkedin: "https://www.linkedin.com/in/jundan-jauhar-04a666259/",
   github: "https://github.com/JundanJauhar"
 };
@@ -32,6 +32,10 @@ export const educationData = [
     degree: "S1 Teknik Informatika",
     period: "2022 - Sekarang (Semester 6)",
     grade: "IPK: 3.42/4.00"
+  },
+  {
+    institution: "MAS Sunan Pandanaran",
+    period: "2019 - 2022",
   }
 ];
 

@@ -26,6 +26,10 @@ import {
 } from "../data/portfolioData";
 
 export default function Portfolio() {
+  const handleDownloadCV = () => {
+    // Buka halaman CV di tab baru
+    window.open('/cv', '_blank');
+  };
 
   const handleContact = () => {
     // Implementasi kontak
@@ -68,7 +72,7 @@ export default function Portfolio() {
         </div>
 
         {/* Footer */}
-        <Footer  onContact={handleContact} />
+        <Footer onDownloadCV={handleDownloadCV} onContact={handleContact} />
       </div>
     </main>
   );
