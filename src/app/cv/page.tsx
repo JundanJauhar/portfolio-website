@@ -1,33 +1,69 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { userData, personalData, contactData, educationData, skillsData, organizationData, projectsData, certificatesData, languagesData } from "../../data/portfolioData";
 
 export default function CVPage() {
-  const handleDownload = () => {
-    // Membuat link download untuk file PDF
-    const link = document.createElement('a');
-    link.href = '/CV-Muhammad-Jundan-Jauhar.pdf';
-    link.download = 'CV-Muhammad-Jundan-Jauhar.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const cvRef = useRef<HTMLDivElement>(null);
+
+  const generatePDF = async () => {
+    if (!cvRef.current) return;
+
+    try {
+      // Hide button saat generate PDF
+      const button = document.querySelector('.pdf-button') as HTMLElement;
+      if (button) button.style.display = 'none';
+
+      // Generate canvas dari HTML
+      const canvas = await html2canvas(cvRef.current, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff'
+      });
+
+      // Show button kembali
+      if (button) button.style.display = 'block';
+
+      // Buat PDF
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 0;
+
+      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      
+      // Download PDF
+      pdf.save('CV-Muhammad-Jundan-Jauhar.pdf');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Gagal generate PDF. Silakan coba lagi.');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Download Button */}
-      <div className="fixed top-4 right-4 z-10">
+    <div className="min-h-screen bg-gray-100">
+      {/* Generate PDF Button */}
+      <div className="pdf-button fixed top-4 right-4 z-10">
         <button
-          onClick={handleDownload}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
+          onClick={generatePDF}
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg flex items-center gap-2"
         >
-          Download CV
+          📄 Generate PDF
         </button>
       </div>
 
       {/* CV Content */}
-      <div className="max-w-4xl mx-auto p-8 bg-white">
+      <div ref={cvRef} className="max-w-4xl mx-auto p-8 bg-white shadow-lg" style={{ minHeight: '297mm' }}>
         {/* Header */}
         <div className="text-center mb-8 border-b-2 border-gray-300 pb-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">{userData.name}</h1>
