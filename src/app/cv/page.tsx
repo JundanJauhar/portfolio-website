@@ -33,6 +33,9 @@ export default function CVPage() {
             <span>📱 {contactData.phone}</span>
             <span>🔗 GitHub: JundanJauhar</span>
             <span>🔗 LinkedIn: JundanJauhar</span>
+            <a href="https://jundanjauhar-portofolio.vercel.app/" className="text-blue-600 hover:underline">
+              🌐 jundanjauhar-portofolio.vercel.app
+            </a>
           </div>
         </div>
 
