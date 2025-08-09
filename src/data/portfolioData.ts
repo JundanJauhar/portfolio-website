@@ -69,28 +69,28 @@ export const projectsData = [
     description: "Ini adalah website pertama saya dalam dunia IT, website ini bertujuan untuk pemesanan Guide wisata secara online",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://github.com/JundanJauhar/TourGuide",
-    img: "/Jundan.JPG"
+    img: "/jundan.JPG"
   },
   {
     title: "JustDoSport",
     description: "Web pemesanan lapangan olahraga secara online",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://github.com/JundanJauhar/justdosport",
-    img: "/Jundan.JPG"
+    img: "/jundan.JPG"
   },
   {
     title: "EcoMama",
     description: "Aplikasi mobile untuk penukaran botol bekas dan mendapatkan poin dari setiap penukaran botol dan bisa digunakan untuk membeli produk yang tersedia di aplikasi",
     technologies: ["Kotlin"],
     link: "https://github.com/JundanJauhar/EcoMama",
-    img: "/Jundan.JPG"
+    img: "/jundan.JPG"
   },
   {
     title: "Portofolio Website",
     description: "website portofolio pribadi yang menampilkan informasi tentang diri saya, proyek yang telah saya kerjakan, dan cara untuk menghubungi saya.",
     technologies: ["next.js", "React", "Tailwind CSS"],
     link: "https://github.com/JundanJauhar/portfolio-website",
-    img: "/Jundan.JPG"
+    img: "/jundan.JPG"
   }
 ];
 
