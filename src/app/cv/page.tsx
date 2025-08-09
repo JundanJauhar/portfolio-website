@@ -1,31 +1,26 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
+import { useRouter } from 'next/navigation';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { userData, personalData, contactData, educationData, skillsData, organizationData, projectsData, certificatesData, languagesData } from "../../data/portfolioData";
 
 export default function CVPage() {
   const cvRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
-  const generatePDF = async () => {
+  const generatePDF = useCallback(async () => {
     if (!cvRef.current) return;
 
     try {
-      // Hide button saat generate PDF
-      const button = document.querySelector('.pdf-button') as HTMLElement;
-      if (button) button.style.display = 'none';
-
-      // Generate canvas dari HTML
+      // Generate canvas dari HTML yang tersembunyi
       const canvas = await html2canvas(cvRef.current, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff'
       });
-
-      // Show button kembali
-      if (button) button.style.display = 'block';
 
       // Buat PDF
       const imgData = canvas.toDataURL('image/png');
@@ -44,26 +39,38 @@ export default function CVPage() {
       
       // Download PDF
       pdf.save('CV-Muhammad-Jundan-Jauhar.pdf');
+      
+      // Redirect ke halaman utama setelah 2 detik
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Gagal generate PDF. Silakan coba lagi.');
+      router.push('/');
     }
-  };
+  }, [router]);
+
+  // Auto generate PDF ketika component dimount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      generatePDF();
+    }, 1000); // Delay 1 detik untuk memastikan component sudah render
+
+    return () => clearTimeout(timer);
+  }, [generatePDF]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Generate PDF Button */}
-      <div className="pdf-button fixed top-4 right-4 z-10">
-        <button
-          onClick={generatePDF}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg flex items-center gap-2"
-        >
-          📄 Generate PDF
-        </button>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      {/* Loading Message */}
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto mb-4"></div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Generating PDF...</h2>
+        <p className="text-gray-600">Your CV will be downloaded automatically</p>
       </div>
 
-      {/* CV Content */}
-      <div ref={cvRef} className="max-w-4xl mx-auto p-8 bg-white shadow-lg" style={{ minHeight: '297mm' }}>
+      {/* Hidden CV Content for PDF Generation */}
+      <div ref={cvRef} className="absolute -left-[9999px] max-w-4xl mx-auto p-8 bg-white" style={{ minHeight: '297mm', width: '210mm' }}>
         {/* Header */}
         <div className="text-center mb-8 border-b-2 border-gray-300 pb-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">{userData.name}</h1>
