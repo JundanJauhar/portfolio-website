@@ -25,8 +25,8 @@ export default function Header({ user }: HeaderProps) {
             <Image 
               src={user.img} 
               alt="Profile Portfolio" 
-              width={500} 
-              height={500} 
+              width={240} 
+              height={240} 
               className="w-60 h-60 rounded-full object-cover"
               priority
               onError={() => setImageError(true)}

@@ -3,7 +3,7 @@ export const userData = {
   name: "Muhammad Jundan Jauhar",
   title: "Universitas Islam Indonesia",
   subtitle: "Teknik Informatika",
-  img: "/jundan.jpg" 
+  img: "/profile.jpg" 
 };
 
 export const contactData = {
@@ -69,28 +69,24 @@ export const projectsData = [
     description: "Ini adalah website pertama saya dalam dunia IT, website ini bertujuan untuk pemesanan Guide wisata secara online",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://github.com/JundanJauhar/TourGuide",
-    img: "/jundan.jpg"
   },
   {
     title: "JustDoSport",
     description: "Web pemesanan lapangan olahraga secara online",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://github.com/JundanJauhar/justdosport",
-    img: "/jundan.jpg"
   },
   {
     title: "EcoMama",
     description: "Aplikasi mobile untuk penukaran botol bekas dan mendapatkan poin dari setiap penukaran botol dan bisa digunakan untuk membeli produk yang tersedia di aplikasi",
     technologies: ["Kotlin"],
     link: "https://github.com/JundanJauhar/EcoMama",
-    img: "/jundan.jpg"
   },
   {
     title: "Portofolio Website",
     description: "website portofolio pribadi yang menampilkan informasi tentang diri saya, proyek yang telah saya kerjakan, dan cara untuk menghubungi saya.",
     technologies: ["next.js", "React", "Tailwind CSS"],
     link: "https://github.com/JundanJauhar/portfolio-website",
-    img: "/jundan.jpg"
   }
 ];
 
