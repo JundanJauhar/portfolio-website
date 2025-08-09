@@ -14,39 +14,52 @@ export default function CVPage() {
     if (!cvRef.current) return;
 
     try {
-      // Generate canvas dari HTML yang tersembunyi dengan setting optimal
+      console.log('Starting PDF generation...');
+      
+      // Generate canvas dari HTML yang tersembunyi
       const canvas = await html2canvas(cvRef.current, {
-        scale: 3, // Tingkatkan scale untuk kualitas lebih tinggi
+        scale: 2, // Turunkan ke 2 untuk stabilitas
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        width: 794, // A4 width in pixels at 96 DPI
-        height: 1123, // A4 height in pixels at 96 DPI
         scrollX: 0,
-        scrollY: 0
+        scrollY: 0,
+        logging: false
       });
 
-      // Buat PDF dengan setting optimal
-      const imgData = canvas.toDataURL('image/png', 1.0); // Kualitas maksimal
+      console.log('Canvas generated successfully');
+
+      // Buat PDF
+      const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       
-      // A4 dimensions
-      const pdfWidth = 210;
-      const pdfHeight = 297;
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
       
-      // Add image to PDF with full page coverage
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      // Calculate ratio untuk fit ke halaman
+      const ratio = Math.min(pdfWidth / (imgWidth * 0.264583), pdfHeight / (imgHeight * 0.264583));
+      const imgX = (pdfWidth - (imgWidth * 0.264583 * ratio)) / 2;
+      const imgY = 0;
+
+      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * 0.264583 * ratio, imgHeight * 0.264583 * ratio);
+      
+      console.log('PDF created successfully');
       
       // Download PDF
       pdf.save('CV-Muhammad-Jundan-Jauhar.pdf');
       
-      // Redirect ke halaman utama setelah 2 detik
+      console.log('PDF download initiated');
+      
+      // Redirect ke halaman utama setelah 3 detik
       setTimeout(() => {
         router.push('/');
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Gagal generate PDF. Silakan coba lagi.');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      alert(`Gagal generate PDF: ${errorMessage}`);
       router.push('/');
     }
   }, [router]);
@@ -54,8 +67,9 @@ export default function CVPage() {
   // Auto generate PDF ketika component dimount
   useEffect(() => {
     const timer = setTimeout(() => {
+      console.log('Starting PDF generation after delay...');
       generatePDF();
-    }, 1000); // Delay 1 detik untuk memastikan component sudah render
+    }, 2000); // Tingkatkan delay ke 2 detik
 
     return () => clearTimeout(timer);
   }, [generatePDF]);
@@ -70,7 +84,14 @@ export default function CVPage() {
       </div>
 
       {/* Hidden CV Content for PDF Generation */}
-      <div ref={cvRef} className="absolute -left-[9999px] bg-white" style={{ width: '210mm', minHeight: '297mm', padding: '20mm' }}>
+      <div ref={cvRef} className="absolute top-[-9999px] left-0 bg-white" style={{ 
+        width: '210mm', 
+        minHeight: '297mm', 
+        padding: '20mm',
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '12px',
+        lineHeight: '1.4'
+      }}>
         {/* Header Section */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">{userData.name}</h1>
