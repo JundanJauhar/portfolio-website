@@ -18,7 +18,7 @@ export default function CVPage() {
       
       // Generate canvas dari HTML yang tersembunyi
       const canvas = await html2canvas(cvRef.current, {
-        scale: 2, // Turunkan ke 2 untuk stabilitas
+        scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
@@ -75,68 +75,81 @@ export default function CVPage() {
   }, [generatePDF]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {/* Loading Message */}
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto mb-4"></div>
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Generating PDF...</h2>
-        <p className="text-gray-600">Your CV will be downloaded automatically</p>
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ 
+          width: '128px', 
+          height: '128px', 
+          border: '2px solid #2563eb', 
+          borderTop: '2px solid transparent', 
+          borderRadius: '50%', 
+          margin: '0 auto 16px',
+          animation: 'spin 1s linear infinite'
+        }}></div>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: '8px' }}>Generating PDF...</h2>
+        <p style={{ color: '#6b7280' }}>Your CV will be downloaded automatically</p>
       </div>
 
-      {/* Hidden CV Content for PDF Generation */}
-      <div ref={cvRef} className="absolute top-[-9999px] left-0 bg-white" style={{ 
+      {/* Hidden CV Content for PDF Generation - Using only inline styles */}
+      <div ref={cvRef} style={{ 
+        position: 'absolute',
+        top: '-9999px',
+        left: '0',
         width: '210mm', 
         minHeight: '297mm', 
         padding: '20mm',
         fontFamily: 'Arial, sans-serif',
         fontSize: '12px',
-        lineHeight: '1.4'
+        lineHeight: '1.4',
+        backgroundColor: '#ffffff',
+        color: '#000000'
       }}>
         {/* Header Section */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">{userData.name}</h1>
-          <h2 className="text-xl text-gray-700 mb-1">{userData.title}</h2>
-          <p className="text-lg text-gray-600">{userData.subtitle}</p>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: 'bold', color: '#111827', marginBottom: '8px', margin: '0 0 8px 0' }}>{userData.name}</h1>
+          <h2 style={{ fontSize: '20px', color: '#374151', marginBottom: '4px', margin: '0 0 4px 0' }}>{userData.title}</h2>
+          <p style={{ fontSize: '18px', color: '#6b7280', margin: '0' }}>{userData.subtitle}</p>
           
-          <div className="mt-4 text-sm text-gray-600">
-            <p>📧 {contactData.email} | 📱 {contactData.phone}</p>
-            <p>🔗 GitHub: JundanJauhar | LinkedIn: JundanJauhar</p>
-            <p>🌐 jundanjauhar-portofolio.vercel.app</p>
+          <div style={{ marginTop: '16px', fontSize: '14px', color: '#6b7280' }}>
+            <p style={{ margin: '4px 0' }}>📧 {contactData.email} | 📱 {contactData.phone}</p>
+            <p style={{ margin: '4px 0' }}>🔗 GitHub: JundanJauhar | LinkedIn: JundanJauhar</p>
+            <p style={{ margin: '4px 0' }}>🌐 jundanjauhar-portofolio.vercel.app</p>
           </div>
         </div>
 
-        <hr className="border-gray-300 mb-6" />
+        <hr style={{ border: 'none', borderTop: '1px solid #d1d5db', marginBottom: '24px' }} />
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-3 gap-8">
+        <div style={{ display: 'flex', gap: '32px' }}>
           {/* Left Column */}
-          <div className="col-span-1 space-y-6">
+          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Personal Information */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 INFORMASI PRIBADI
               </h3>
-              <div className="space-y-2 text-sm">
-                <p><strong>Nama:</strong> {personalData.fullName}</p>
-                <p><strong>TTL:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
-                <p><strong>Jenis Kelamin:</strong> {personalData.gender}</p>
-                <p><strong>Agama:</strong> {personalData.religion}</p>
-                <p><strong>Status:</strong> {personalData.maritalStatus}</p>
-                <p><strong>Kewarganegaraan:</strong> {personalData.nationality}</p>
-                <p><strong>Alamat:</strong> {personalData.address}</p>
+              <div style={{ fontSize: '14px' }}>
+                <p style={{ margin: '8px 0' }}><strong>Nama:</strong> {personalData.fullName}</p>
+                <p style={{ margin: '8px 0' }}><strong>TTL:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
+                <p style={{ margin: '8px 0' }}><strong>Jenis Kelamin:</strong> {personalData.gender}</p>
+                <p style={{ margin: '8px 0' }}><strong>Agama:</strong> {personalData.religion}</p>
+                <p style={{ margin: '8px 0' }}><strong>Status:</strong> {personalData.maritalStatus}</p>
+                <p style={{ margin: '8px 0' }}><strong>Kewarganegaraan:</strong> {personalData.nationality}</p>
+                <p style={{ margin: '8px 0' }}><strong>Alamat:</strong> {personalData.address}</p>
               </div>
             </section>
 
             {/* Languages */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 BAHASA
               </h3>
-              <div className="space-y-1 text-sm">
+              <div style={{ fontSize: '14px' }}>
                 {languagesData.map((lang, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span className="font-medium">{lang.name}</span>
-                    <span className="text-gray-600">{lang.level}</span>
+                  <div key={index} style={{ display: 'flex', justifyContent: 'space-between', margin: '4px 0' }}>
+                    <span style={{ fontWeight: '500' }}>{lang.name}</span>
+                    <span style={{ color: '#6b7280' }}>{lang.level}</span>
                   </div>
                 ))}
               </div>
@@ -144,42 +157,40 @@ export default function CVPage() {
 
             {/* Skills */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 KEAHLIAN TEKNIS
               </h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <h4 className="font-semibold mb-1">Programming:</h4>
-                  <ul className="space-y-1">
-                    {skillsData.programmingLanguages.map((skill, index) => (
-                      <li key={index}>• {skill.name}</li>
-                    ))}
-                  </ul>
+              <div style={{ fontSize: '14px' }}>
+                <div style={{ marginBottom: '12px' }}>
+                  <h4 style={{ fontWeight: '600', marginBottom: '4px' }}>Programming:</h4>
+                  {skillsData.programmingLanguages.map((skill, index) => (
+                    <div key={index} style={{ margin: '4px 0' }}>• {skill.name}</div>
+                  ))}
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Frameworks:</h4>
-                  <p>{skillsData.frameworks.join(", ")}</p>
+                  <h4 style={{ fontWeight: '600', marginBottom: '4px' }}>Frameworks:</h4>
+                  <p style={{ margin: 0 }}>{skillsData.frameworks.join(", ")}</p>
                 </div>
               </div>
             </section>
           </div>
 
           {/* Right Column */}
-          <div className="col-span-2 space-y-6">
+          <div style={{ flex: '2', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Education */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 PENDIDIKAN
               </h3>
               {educationData.map((edu, index) => (
-                <div key={index} className="mb-4">
-                  <div className="flex justify-between items-start">
+                <div key={index} style={{ marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div>
-                      <h4 className="font-semibold text-gray-900">{edu.institution}</h4>
-                      <p className="text-gray-700">{edu.degree}</p>
-                      {edu.grade && <p className="text-sm text-gray-600">{edu.grade}</p>}
+                      <h4 style={{ fontWeight: '600', color: '#111827', margin: 0 }}>{edu.institution}</h4>
+                      <p style={{ color: '#374151', margin: '2px 0' }}>{edu.degree}</p>
+                      {edu.grade && <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>{edu.grade}</p>}
                     </div>
-                    <span className="text-sm text-gray-600 font-medium">{edu.period}</span>
+                    <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>{edu.period}</span>
                   </div>
                 </div>
               ))}
@@ -187,21 +198,21 @@ export default function CVPage() {
 
             {/* Organization Experience */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 PENGALAMAN ORGANISASI
               </h3>
               {organizationData.map((exp, index) => (
-                <div key={index} className="mb-4">
-                  <div className="flex justify-between items-start mb-2">
+                <div key={index} style={{ marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                     <div>
-                      <h4 className="font-semibold text-gray-900">{exp.position}</h4>
-                      <p className="text-gray-700">{exp.organization}</p>
+                      <h4 style={{ fontWeight: '600', color: '#111827', margin: 0 }}>{exp.position}</h4>
+                      <p style={{ color: '#374151', margin: '2px 0' }}>{exp.organization}</p>
                     </div>
-                    <span className="text-sm text-gray-600 font-medium">{exp.period}</span>
+                    <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>{exp.period}</span>
                   </div>
-                  <ul className="list-disc list-inside text-sm text-gray-600 space-y-1 ml-4">
+                  <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '14px', color: '#6b7280' }}>
                     {exp.responsibilities.map((resp, idx) => (
-                      <li key={idx}>{resp}</li>
+                      <li key={idx} style={{ marginBottom: '4px' }}>{resp}</li>
                     ))}
                   </ul>
                 </div>
@@ -210,19 +221,19 @@ export default function CVPage() {
 
             {/* Projects */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 PORTFOLIO PROYEK
               </h3>
-              <div className="space-y-3">
+              <div>
                 {projectsData.map((project, index) => (
-                  <div key={index}>
-                    <h4 className="font-semibold text-gray-900">{project.title}</h4>
-                    <p className="text-sm text-gray-700 mb-1">{project.description}</p>
-                    <p className="text-xs text-gray-600">
+                  <div key={index} style={{ marginBottom: '12px' }}>
+                    <h4 style={{ fontWeight: '600', color: '#111827', margin: 0 }}>{project.title}</h4>
+                    <p style={{ fontSize: '14px', color: '#374151', margin: '4px 0' }}>{project.description}</p>
+                    <p style={{ fontSize: '12px', color: '#6b7280', margin: 0 }}>
                       <strong>Tech:</strong> {project.technologies.join(", ")}
                     </p>
                     {project.link && (
-                      <p className="text-xs text-blue-600">{project.link}</p>
+                      <p style={{ fontSize: '12px', color: '#2563eb', margin: 0 }}>{project.link}</p>
                     )}
                   </div>
                 ))}
@@ -231,14 +242,14 @@ export default function CVPage() {
 
             {/* Certificates */}
             <section>
-              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
                 SERTIFIKAT
               </h3>
-              <div className="space-y-2">
+              <div>
                 {certificatesData.map((cert, index) => (
-                  <div key={index} className="flex justify-between text-sm">
-                    <span className="text-gray-900">{cert.name}</span>
-                    <span className="text-gray-600">{cert.year}</span>
+                  <div key={index} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', margin: '8px 0' }}>
+                    <span style={{ color: '#111827' }}>{cert.name}</span>
+                    <span style={{ color: '#6b7280' }}>{cert.year}</span>
                   </div>
                 ))}
               </div>
@@ -246,6 +257,16 @@ export default function CVPage() {
           </div>
         </div>
       </div>
+
+      {/* CSS for spinner animation */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `
+      }} />
     </div>
   );
 }
