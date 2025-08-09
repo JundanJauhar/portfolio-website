@@ -14,28 +14,28 @@ export default function CVPage() {
     if (!cvRef.current) return;
 
     try {
-      // Generate canvas dari HTML yang tersembunyi
+      // Generate canvas dari HTML yang tersembunyi dengan setting optimal
       const canvas = await html2canvas(cvRef.current, {
-        scale: 2,
+        scale: 3, // Tingkatkan scale untuk kualitas lebih tinggi
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        width: 794, // A4 width in pixels at 96 DPI
+        height: 1123, // A4 height in pixels at 96 DPI
+        scrollX: 0,
+        scrollY: 0
       });
 
-      // Buat PDF
-      const imgData = canvas.toDataURL('image/png');
+      // Buat PDF dengan setting optimal
+      const imgData = canvas.toDataURL('image/png', 1.0); // Kualitas maksimal
       const pdf = new jsPDF('p', 'mm', 'a4');
       
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
+      // A4 dimensions
+      const pdfWidth = 210;
+      const pdfHeight = 297;
       
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 0;
-
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      // Add image to PDF with full page coverage
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       
       // Download PDF
       pdf.save('CV-Muhammad-Jundan-Jauhar.pdf');
@@ -70,147 +70,160 @@ export default function CVPage() {
       </div>
 
       {/* Hidden CV Content for PDF Generation */}
-      <div ref={cvRef} className="absolute -left-[9999px] max-w-4xl mx-auto p-8 bg-white" style={{ minHeight: '297mm', width: '210mm' }}>
-        {/* Header */}
-        <div className="text-center mb-8 border-b-2 border-gray-300 pb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">{userData.name}</h1>
-          <p className="text-xl text-gray-600 mb-1">{userData.title}</p>
-          <p className="text-lg text-gray-500">{userData.subtitle}</p>
+      <div ref={cvRef} className="absolute -left-[9999px] bg-white" style={{ width: '210mm', minHeight: '297mm', padding: '20mm' }}>
+        {/* Header Section */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">{userData.name}</h1>
+          <h2 className="text-xl text-gray-700 mb-1">{userData.title}</h2>
+          <p className="text-lg text-gray-600">{userData.subtitle}</p>
           
-          <div className="mt-4 flex justify-center space-x-6 text-sm">
-            <span>📧 {contactData.email}</span>
-            <span>📱 {contactData.phone}</span>
-            <span>🔗 GitHub: JundanJauhar</span>
-            <span>🔗 LinkedIn: JundanJauhar</span>
-            <a href="https://jundanjauhar-portofolio.vercel.app/" className="text-blue-600 hover:underline">
-              🌐 jundanjauhar-portofolio.vercel.app
-            </a>
+          <div className="mt-4 text-sm text-gray-600">
+            <p>📧 {contactData.email} | 📱 {contactData.phone}</p>
+            <p>🔗 GitHub: JundanJauhar | LinkedIn: JundanJauhar</p>
+            <p>🌐 jundanjauhar-portofolio.vercel.app</p>
           </div>
         </div>
 
-        {/* Personal Information */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            INFORMASI PRIBADI
-          </h2>
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p><strong>Nama Lengkap:</strong> {personalData.fullName}</p>
-              <p><strong>Tempat, Tanggal Lahir:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
-              <p><strong>Jenis Kelamin:</strong> {personalData.gender}</p>
-              <p><strong>Agama:</strong> {personalData.religion}</p>
-            </div>
-            <div>
-              <p><strong>Alamat:</strong> {personalData.address}</p>
-              <p><strong>Status:</strong> {personalData.maritalStatus}</p>
-              <p><strong>Kewarganegaraan:</strong> {personalData.nationality}</p>
-            </div>
-          </div>
-        </section>
+        <hr className="border-gray-300 mb-6" />
 
-        {/* Education */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            PENDIDIKAN
-          </h2>
-          {educationData.map((edu, index) => (
-            <div key={index} className="mb-3">
-              <h3 className="font-semibold text-gray-800">{edu.institution}</h3>
-              <p className="text-gray-600">{edu.degree} | {edu.period}</p>
-              {edu.grade && <p className="text-gray-600">{edu.grade}</p>}
-            </div>
-          ))}
-        </section>
-
-        {/* Skills */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            KEAHLIAN TEKNIS
-          </h2>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h3 className="font-semibold text-gray-700 mb-2">Programming Languages:</h3>
-              <ul className="list-disc list-inside text-sm text-gray-600">
-                {skillsData.programmingLanguages.map((skill, index) => (
-                  <li key={index}>{skill.name}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-700 mb-2">Frameworks & Tools:</h3>
-              <p className="text-sm text-gray-600">
-                {skillsData.frameworks.join(", ")}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Organization Experience */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            PENGALAMAN ORGANISASI
-          </h2>
-          {organizationData.map((exp, index) => (
-            <div key={index} className="mb-4">
-              <h3 className="font-semibold text-gray-800">{exp.organization}</h3>
-              <p className="text-gray-600 font-medium">{exp.position} | {exp.period}</p>
-              <ul className="list-disc list-inside text-sm text-gray-600 mt-1">
-                {exp.responsibilities.map((resp, idx) => (
-                  <li key={idx}>{resp}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-
-        {/* Projects */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            PORTFOLIO PROYEK
-          </h2>
-          {projectsData.map((project, index) => (
-            <div key={index} className="mb-3">
-              <h3 className="font-semibold text-gray-800">{project.title}</h3>
-              <p className="text-sm text-gray-600 mb-1">{project.description}</p>
-              <p className="text-sm text-gray-500">
-                <strong>Teknologi:</strong> {project.technologies.join(", ")}
-              </p>
-              {project.link && (
-                <p className="text-sm text-blue-600">{project.link}</p>
-              )}
-            </div>
-          ))}
-        </section>
-
-        {/* Certificates */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            SERTIFIKAT
-          </h2>
-          <div className="space-y-1">
-            {certificatesData.map((cert, index) => (
-              <div key={index} className="flex justify-between text-sm">
-                <span className="text-gray-800">{cert.name}</span>
-                <span className="text-gray-600">{cert.year}</span>
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="col-span-1 space-y-6">
+            {/* Personal Information */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                INFORMASI PRIBADI
+              </h3>
+              <div className="space-y-2 text-sm">
+                <p><strong>Nama:</strong> {personalData.fullName}</p>
+                <p><strong>TTL:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
+                <p><strong>Jenis Kelamin:</strong> {personalData.gender}</p>
+                <p><strong>Agama:</strong> {personalData.religion}</p>
+                <p><strong>Status:</strong> {personalData.maritalStatus}</p>
+                <p><strong>Kewarganegaraan:</strong> {personalData.nationality}</p>
+                <p><strong>Alamat:</strong> {personalData.address}</p>
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        {/* Languages */}
-        <section className="mb-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-3 border-b border-gray-200 pb-1">
-            KEMAMPUAN BAHASA
-          </h2>
-          <div className="flex space-x-6">
-            {languagesData.map((lang, index) => (
-              <div key={index} className="text-sm">
-                <span className="font-medium text-gray-800">{lang.name}:</span>
-                <span className="text-gray-600 ml-1">{lang.level}</span>
+            {/* Languages */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                BAHASA
+              </h3>
+              <div className="space-y-1 text-sm">
+                {languagesData.map((lang, index) => (
+                  <div key={index} className="flex justify-between">
+                    <span className="font-medium">{lang.name}</span>
+                    <span className="text-gray-600">{lang.level}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+
+            {/* Skills */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                KEAHLIAN TEKNIS
+              </h3>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <h4 className="font-semibold mb-1">Programming:</h4>
+                  <ul className="space-y-1">
+                    {skillsData.programmingLanguages.map((skill, index) => (
+                      <li key={index}>• {skill.name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-1">Frameworks:</h4>
+                  <p>{skillsData.frameworks.join(", ")}</p>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+
+          {/* Right Column */}
+          <div className="col-span-2 space-y-6">
+            {/* Education */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                PENDIDIKAN
+              </h3>
+              {educationData.map((edu, index) => (
+                <div key={index} className="mb-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{edu.institution}</h4>
+                      <p className="text-gray-700">{edu.degree}</p>
+                      {edu.grade && <p className="text-sm text-gray-600">{edu.grade}</p>}
+                    </div>
+                    <span className="text-sm text-gray-600 font-medium">{edu.period}</span>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            {/* Organization Experience */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                PENGALAMAN ORGANISASI
+              </h3>
+              {organizationData.map((exp, index) => (
+                <div key={index} className="mb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{exp.position}</h4>
+                      <p className="text-gray-700">{exp.organization}</p>
+                    </div>
+                    <span className="text-sm text-gray-600 font-medium">{exp.period}</span>
+                  </div>
+                  <ul className="list-disc list-inside text-sm text-gray-600 space-y-1 ml-4">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx}>{resp}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </section>
+
+            {/* Projects */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                PORTFOLIO PROYEK
+              </h3>
+              <div className="space-y-3">
+                {projectsData.map((project, index) => (
+                  <div key={index}>
+                    <h4 className="font-semibold text-gray-900">{project.title}</h4>
+                    <p className="text-sm text-gray-700 mb-1">{project.description}</p>
+                    <p className="text-xs text-gray-600">
+                      <strong>Tech:</strong> {project.technologies.join(", ")}
+                    </p>
+                    {project.link && (
+                      <p className="text-xs text-blue-600">{project.link}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Certificates */}
+            <section>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-600 pb-1">
+                SERTIFIKAT
+              </h3>
+              <div className="space-y-2">
+                {certificatesData.map((cert, index) => (
+                  <div key={index} className="flex justify-between text-sm">
+                    <span className="text-gray-900">{cert.name}</span>
+                    <span className="text-gray-600">{cert.year}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
   );
