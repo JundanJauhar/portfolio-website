@@ -4,19 +4,25 @@ import React from "react";
 import { userData, personalData, contactData, educationData, skillsData, organizationData, projectsData, certificatesData, languagesData } from "../../data/portfolioData";
 
 export default function CVPage() {
-  const handlePrint = () => {
-    window.print();
+  const handleDownload = () => {
+    // Membuat link download untuk file PDF
+    const link = document.createElement('a');
+    link.href = '/CV-Muhammad-Jundan-Jauhar.pdf';
+    link.download = 'CV-Muhammad-Jundan-Jauhar.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Print Button - Hidden saat print */}
-      <div className="no-print fixed top-4 right-4 z-10">
+      {/* Download Button */}
+      <div className="fixed top-4 right-4 z-10">
         <button
-          onClick={handlePrint}
+          onClick={handleDownload}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
         >
-          Print CV
+          Download CV
         </button>
       </div>
 
@@ -163,21 +169,6 @@ export default function CVPage() {
           </div>
         </section>
       </div>
-
-      {/* Print Styles */}
-      <style jsx global>{`
-        @media print {
-          .no-print {
-            display: none;
-          }
-          body {
-            font-size: 12px;
-          }
-          .page-break {
-            page-break-before: always;
-          }
-        }
-      `}</style>
     </div>
   );
 }
