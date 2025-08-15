@@ -15,7 +15,7 @@ export default function OrganizationExperience({ experiences }: OrganizationExpe
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-        Pengalaman Organisasi
+        Organization Experience
       </h2>
       <div className="space-y-4">
         {experiences.map((exp, index) => (

@@ -16,7 +16,7 @@ export default function CVPage() {
     try {
       console.log('Starting PDF generation...');
       
-      // Generate canvas dari HTML yang tersembunyi
+      // Generate canvas from hidden HTML
       const canvas = await html2canvas(cvRef.current, {
         scale: 2,
         useCORS: true,
@@ -29,7 +29,7 @@ export default function CVPage() {
 
       console.log('Canvas generated successfully');
 
-      // Buat PDF
+      // Create PDF
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       
@@ -38,7 +38,7 @@ export default function CVPage() {
       const imgWidth = canvas.width;
       const imgHeight = canvas.height;
       
-      // Calculate ratio untuk fit ke halaman
+      // Calculate ratio to fit the page
       const ratio = Math.min(pdfWidth / (imgWidth * 0.264583), pdfHeight / (imgHeight * 0.264583));
       const imgX = (pdfWidth - (imgWidth * 0.264583 * ratio)) / 2;
       const imgY = 0;
@@ -52,24 +52,24 @@ export default function CVPage() {
       
       console.log('PDF download initiated');
       
-      // Redirect ke halaman utama setelah 3 detik
+      // Redirect to main page after 3 seconds
       setTimeout(() => {
         router.push('/');
       }, 3000);
     } catch (error) {
       console.error('Error generating PDF:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      alert(`Gagal generate PDF: ${errorMessage}`);
+      alert(`Failed to generate PDF: ${errorMessage}`);
       router.push('/');
     }
   }, [router]);
 
-  // Auto generate PDF ketika component dimount
+  // Auto generate PDF when component mounts
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log('Starting PDF generation after delay...');
       generatePDF();
-    }, 2000); // Tingkatkan delay ke 2 detik
+    }, 2000); // Increase delay to 2 seconds
 
     return () => clearTimeout(timer);
   }, [generatePDF]);
@@ -127,23 +127,23 @@ export default function CVPage() {
             {/* Personal Information */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                INFORMASI PRIBADI
+                PERSONAL INFORMATION
               </h3>
               <div style={{ fontSize: '14px' }}>
-                <p style={{ margin: '8px 0' }}><strong>Nama:</strong> {personalData.fullName}</p>
-                <p style={{ margin: '8px 0' }}><strong>TTL:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
-                <p style={{ margin: '8px 0' }}><strong>Jenis Kelamin:</strong> {personalData.gender}</p>
-                <p style={{ margin: '8px 0' }}><strong>Agama:</strong> {personalData.religion}</p>
-                <p style={{ margin: '8px 0' }}><strong>Status:</strong> {personalData.maritalStatus}</p>
-                <p style={{ margin: '8px 0' }}><strong>Kewarganegaraan:</strong> {personalData.nationality}</p>
-                <p style={{ margin: '8px 0' }}><strong>Alamat:</strong> {personalData.address}</p>
+                <p style={{ margin: '8px 0' }}><strong>Name:</strong> {personalData.fullName}</p>
+                <p style={{ margin: '8px 0' }}><strong>Place, Date of Birth:</strong> {personalData.birthPlace}, {personalData.birthDate}</p>
+                <p style={{ margin: '8px 0' }}><strong>Gender:</strong> {personalData.gender}</p>
+                <p style={{ margin: '8px 0' }}><strong>Religion:</strong> {personalData.religion}</p>
+                <p style={{ margin: '8px 0' }}><strong>Marital Status:</strong> {personalData.maritalStatus}</p>
+                <p style={{ margin: '8px 0' }}><strong>Nationality:</strong> {personalData.nationality}</p>
+                <p style={{ margin: '8px 0' }}><strong>Address:</strong> {personalData.address}</p>
               </div>
             </section>
 
             {/* Languages */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                BAHASA
+                LANGUAGES
               </h3>
               <div style={{ fontSize: '14px' }}>
                 {languagesData.map((lang, index) => (
@@ -158,7 +158,7 @@ export default function CVPage() {
             {/* Skills */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                KEAHLIAN TEKNIS
+                TECHNICAL SKILLS
               </h3>
               <div style={{ fontSize: '14px' }}>
                 <div style={{ marginBottom: '12px' }}>
@@ -180,7 +180,7 @@ export default function CVPage() {
             {/* Education */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                PENDIDIKAN
+                EDUCATION
               </h3>
               {educationData.map((edu, index) => (
                 <div key={index} style={{ marginBottom: '16px' }}>
@@ -199,7 +199,7 @@ export default function CVPage() {
             {/* Organization Experience */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                PENGALAMAN ORGANISASI
+                ORGANIZATION EXPERIENCE
               </h3>
               {organizationData.map((exp, index) => (
                 <div key={index} style={{ marginBottom: '16px' }}>
@@ -222,7 +222,7 @@ export default function CVPage() {
             {/* Projects */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                PORTFOLIO PROYEK
+                PROJECT PORTFOLIO
               </h3>
               <div>
                 {projectsData.map((project, index) => (
@@ -243,7 +243,7 @@ export default function CVPage() {
             {/* Certificates */}
             <section>
               <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#111827', marginBottom: '12px', paddingBottom: '4px', borderBottom: '2px solid #2563eb' }}>
-                SERTIFIKAT
+                CERTIFICATES
               </h3>
               <div>
                 {certificatesData.map((cert, index) => (

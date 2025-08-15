@@ -16,7 +16,7 @@ export default function Certificates({ certificates }: CertificatesProps) {
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-        Sertifikat
+        Certificates
       </h2>
       <div className="space-y-3 ">
         {certificates.map((cert, index) => (
