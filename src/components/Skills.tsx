@@ -19,42 +19,54 @@ export default function Skills({ skills }: SkillsProps) {
     return `${(level / 5) * 100}%`;
   };
 
+  const getLevelLabel = (level: number) => {
+    if (level <= 2) return 'Beginner';
+    if (level === 3) return 'Intermediate';
+    if (level === 4) return 'Advanced';
+    return 'Expert';
+  };
+
   return (
-    <section>
-      <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-        Technical Skills
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h3 className="font-semibold text-lg text-gray-700 mb-3">Programming Languages</h3>
-          <div className="space-y-2">
-            {skills.programmingLanguages.map((skill, index) => (
-              <div key={index} className="flex justify-between items-center">
-                <span>{skill.name}</span>
-                <div className="w-24 bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-blue-500 h-2 rounded-full" 
-                    style={{ width: getSkillWidth(skill.level) }}
-                  ></div>
-                </div>
+    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm space-y-6">
+      <div>
+        <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-2 mb-4">
+          Programming Languages
+        </h3>
+        <div className="space-y-4">
+          {skills.programmingLanguages.map((skill, index) => (
+            <div key={index} className="space-y-1.5">
+              <div className="flex justify-between text-sm">
+                <span className="font-bold text-gray-700">{skill.name}</span>
+                <span className="text-indigo-600 font-medium text-xs">
+                  {getLevelLabel(skill.level)}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3 className="font-semibold text-lg text-gray-700 mb-3">Frameworks & Tools</h3>
-          <div className="flex flex-wrap gap-2">
-            {skills.frameworks.map((framework, index) => (
-              <span 
-                key={index} 
-                className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
-              >
-                {framework}
-              </span>
-            ))}
-          </div>
+              <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                <div 
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full transition-all duration-500" 
+                  style={{ width: getSkillWidth(skill.level) }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+
+      <div>
+        <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-2 mb-4">
+          Frameworks & Tools
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {skills.frameworks.map((framework, index) => (
+            <span 
+              key={index} 
+              className="px-3 py-1.5 bg-indigo-50 border border-indigo-100/50 text-indigo-700 font-semibold rounded-lg text-xs hover:bg-indigo-100 hover:border-indigo-200 transition-all duration-200 cursor-default"
+            >
+              {framework}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

@@ -12,12 +12,14 @@ import Certificates from "../components/Certificates";
 import LanguageSkills from "../components/LanguageSkills";
 import Motivation from "../components/Motivation";
 import Footer from "../components/Footer";
+import WorkExperience from "../components/WorkExperience";
 import {
   userData,
   contactData,
   personalData,
   educationData,
   skillsData,
+  workExperienceData,
   organizationData,
   projectsData,
   certificatesData,
@@ -26,53 +28,60 @@ import {
 } from "../data/portfolioData";
 
 export default function Portfolio() {
-  const handleDownloadCV = () => {
-    // Buka halaman CV di tab baru
-    window.open('/cv', '_blank');
-  };
-
   const handleContact = () => {
-    // Implementasi kontak
+    // Hubungi email secara langsung
     window.open(`mailto:${contactData.email}`);
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        {/* Header Section */}
-        <Header user={userData} />
+    <main className="min-h-screen bg-slate-50 py-10 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column (Sticky Sidebar on Desktop) */}
+          <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-8">
+            {/* Profile Header */}
+            <Header user={userData} />
 
-        {/* Contact Info */}
-        <ContactInfo contact={contactData} />
+            {/* Contact & Social Links */}
+            <ContactInfo contact={contactData} />
 
-        <div className="p-8 space-y-8">
-          {/* Data Diri */}
-          <PersonalData personalInfo={personalData} />
+            {/* Technical Skills Profile */}
+            <Skills skills={skillsData} />
 
-          {/* Pendidikan */}
-          <Education education={educationData} />
+            {/* Language Fluency */}
+            <LanguageSkills languages={languagesData} />
 
-          {/* Keahlian */}
-          <Skills skills={skillsData} />
+            {/* Detailed Personal Attributes */}
+            <PersonalData personalInfo={personalData} />
+          </div>
 
-          {/* Pengalaman Organisasi */}
-          <OrganizationExperience experiences={organizationData} />
+          {/* Right Column (Detailed Scrollable Content) */}
+          <div className="lg:col-span-8 space-y-10">
+            {/* Core Motivation / Professional Summary */}
+            <Motivation motivationText={motivationText} />
 
-          {/* Portofolio Proyek */}
-          <ProjectPortfolio projects={projectsData} />
+            {/* Professional Work History */}
+            <WorkExperience experiences={workExperienceData} />
 
-          {/* Sertifikat */}
-          <Certificates certificates={certificatesData} />
+            {/* Highlighted Software Projects */}
+            <ProjectPortfolio projects={projectsData} />
 
-          {/* Bahasa */}
-          <LanguageSkills languages={languagesData} />
+            {/* Scholastic Achievements */}
+            <Education education={educationData} />
 
-          {/* Motivasi */}
-          <Motivation motivationText={motivationText} />
+            {/* Industry Certificates */}
+            <Certificates certificates={certificatesData} />
+
+            {/* Extracurricular / Organization Role */}
+            <OrganizationExperience experiences={organizationData} />
+
+            {/* Page Footer Action Cards */}
+            <Footer onContact={handleContact} />
+          </div>
+
         </div>
-
-        {/* Footer */}
-        <Footer onDownloadCV={handleDownloadCV} onContact={handleContact} />
       </div>
     </main>
   );

@@ -1,9 +1,9 @@
 // Portfolio page data
 export const userData = {
   name: "Muhammad Jundan Jauhar",
-  title: "Universitas Islam Indonesia",
-  subtitle: "Informatics Engineering",
-  img: "/profile.jpg"
+  title: "Programmer / Full Stack Developer",
+  subtitle: "Informatics Student at Universitas Islam Indonesia",
+  img: "/Jundan.JPG"
 };
 
 export const contactData = {
@@ -19,7 +19,7 @@ export const personalData = {
   birthDate: "June 01, 2003",
   gender: "Male",
   religion: "Islam",
-  address: "Jl. Dusun Clumprit, Sardonoharjo, Ngaglik, Sleman, Yogyakarta",
+  address: "Ngaglik, Sleman, Yogyakarta",
   maritalStatus: "Single",
   nationality: "Indonesian"
 };
@@ -28,7 +28,7 @@ export const educationData = [
   {
     institution: "Universitas Islam Indonesia",
     degree: "Bachelor of Informatics Engineering",
-    period: "2022 - Present (6th Semester)",
+    period: "2022 - Present",
     grade: "GPA: 3.42/4.00"
   },
   {
@@ -41,15 +41,32 @@ export const educationData = [
 
 export const skillsData = {
   programmingLanguages: [
-    { name: "Java", level: 3 },
-    { name: "JavaScript", level: 3 },
-    { name: "PHP", level: 3 },
-    { name: "Kotlin", level: 2 }
+    { name: "Java", level: 4 },
+    { name: "JavaScript", level: 4 },
+    { name: "PHP", level: 4 },
+    { name: "Kotlin", level: 3 },
+    { name: "Python", level: 3 }
   ],
   frameworks: [
-    "React", "Next.js", "Figma", "HTML", "CSS", "Git"
+    "React.js", "Next.js", "Laravel", "Odoo", "MySQL", "Bootstrap", "HTML", "CSS", "Git", "Figma", "Miro"
   ]
 };
+
+export const workExperienceData = [
+  {
+    role: "Magang: Pengembang Sistem (Full Stack Developer)",
+    company: "PT PAL Indonesia (BUMN Pertahanan Maritim)",
+    division: "Divisi IT Transformation and Command Center",
+    period: "Oktober 2025 - April 2026",
+    responsibilities: [
+      "Merancang dan mengembangkan Procurement Tracking System berbasis web menggunakan Laravel dan MySQL untuk memantau proses pengadaan barang di 8 checkpoint dengan 7 peran pengguna berbeda (Supply Chain, Divisi Desain, QA, Sekretaris Direksi, Accounting, Vendor, dan Super Admin)",
+      "Membangun modul-modul fungsional seperti Evatek, Review Kontrak, Notifikasi, Summary Report, dan Log Activity untuk mendukung transparansi dan pelacakan status pengadaan secara real-time",
+      "Merancang alur proses, ERD, dan wireframe menggunakan Miro, serta membuat high-fidelity UI/UX mockup menggunakan Figma sebelum masuk ke tahap pengembangan",
+      "Berkolaborasi dengan tim developer dalam metodologi Agile, mencakup pembagian tugas sprint, code review, dan pengujian User Acceptance Test (UAT) bersama pengguna terkait",
+      "Menangani pengembangan Full-Stack, mulai dari desain database, logika back-end, hingga tampilan antarmuka front-end yang responsif"
+    ]
+  }
+];
 
 export const organizationData = [
   {
@@ -65,67 +82,63 @@ export const organizationData = [
 
 export const projectsData = [
   {
-    title: "TourGuide",
-    description: "My first website in the IT world, designed for online tour guide booking services",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    link: "https://github.com/JundanJauhar/TourGuide",
+    title: "Tracking Procurement",
+    description: "Sistem informasi tingkat enterprise untuk mengelola dan melacak seluruh proses pengadaan barang di PT PAL Indonesia secara end-to-end, mencakup 9 tahap alur pengadaan mulai dari pengajuan hingga penyelesaian kontrak dengan vendor.",
+    technologies: ["Laravel", "PHP", "MySQL", "Bootstrap"],
+    link: "https://github.com/JundanJauhar/project-pal"
   },
   {
     title: "JustDoSport",
-    description: "Online sports field booking web application",
+    description: "Aplikasi web untuk pemesanan lapangan olahraga secara online, memungkinkan pengguna mencari, memilih jadwal, dan melakukan booking lapangan secara real-time.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    link: "https://github.com/JundanJauhar/justdosport",
+    link: "https://github.com/JundanJauhar/justdosport"
   },
   {
     title: "EcoMama",
-    description: "Mobile application for exchanging used bottles and earning points from each bottle exchange that can be used to purchase products available in the app",
-    technologies: ["Kotlin"],
-    link: "https://github.com/JundanJauhar/EcoMama",
+    description: "Aplikasi mobile berbasis Android untuk menukar botol plastik bekas menjadi poin, yang selanjutnya dapat digunakan pengguna untuk membeli produk yang tersedia di dalam aplikasi sebagai bentuk edukasi daur ulang.",
+    technologies: ["Kotlin", "Android Studio"],
+    link: "https://github.com/JundanJauhar/EcoMama"
   },
   {
-    title: "Portfolio Website",
-    description: "Personal portfolio website showcasing information about myself, projects I've worked on, and ways to contact me",
-    technologies: ["next.js", "React", "Tailwind CSS"],
-    link: "https://github.com/JundanJauhar/portfolio-website",
+    title: "TourGuide",
+    description: "Website pertama penulis di bidang pengembangan web, dirancang sebagai layanan pemesanan jasa pemandu wisata (tour guide) secara online bagi wisatawan.",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
+    link: "https://github.com/JundanJauhar/TourGuide"
   }
 ];
 
 export const certificatesData = [
   {
-    name: "Next.js with Headless CMS Learning Certificate",
+    name: "Next.js with Headless CMS Certificate",
     year: "2025",
     img: "/nextJs-sertifikat.jpg",
-    describe: "On August 4, 2025, I successfully completed the Next.js with Headless CMS online course organized by CodePolitan. This program enhanced my skills in building modern web applications using Next.js, integrating headless CMS solutions for content management, and implementing server-side rendering and static site generation. The certificate validates my competence in developing scalable and content-driven web applications."
+    describe: "Sertifikasi yang membuktikan kompetensi dalam membangun aplikasi web modern menggunakan Next.js, mengintegrasikan solusi headless CMS untuk manajemen konten, serta mengimplementasikan rendering sisi server (SSR) dan pembuatan situs statis (SSG)."
   },
   {
     name: "ReactJS Learning Certificate",
     year: "2024",
     img: "/reactJs-sertifikat.jpg",
-    describe: "On September 15, 2024, I successfully completed the ReactJS online course organized by CodePolitan. Throughout this program, I learned the fundamentals of React, including component-based architecture, state management, props handling, and building dynamic, responsive user interfaces. The certificate confirms my ability to apply ReactJS concepts in front-end development projects."
+    describe: "Sertifikasi penyelesaian kursus ReactJS. Membuktikan pemahaman mendalam tentang arsitektur berbasis komponen, manajemen state, penanganan props, dan pembuatan antarmuka pengguna yang dinamis serta responsif."
   },
   {
     name: "Basic HTML Learning Certificate",
     year: "2023",
     img: "/html-sertifikat.jpg",
-    describe: "On August 10, 2023, I successfully completed the Basic HTML online course organized by CodePolitan. This program provided me with foundational knowledge of HTML structure, elements, and syntax, enabling me to create and structure web pages effectively. The certificate signifies that I have met all the learning objectives and requirements of the course."
+    describe: "Sertifikasi kompetensi dasar HTML, mencakup struktur dokumen web, elemen-elemen HTML5, formulir, dan penataan semantik halaman web."
   },
   {
-    name: "Cybersecurity Essentials - Genap 2025",
+    name: "Cybersecurity Essentials",
     year: "2025",
     img: "/cyber-sertifikat.jpg",
-    describe: "On August 13, 2025, I successfully completed the Cybersecurity Essentials training program organized by Universitas Islam Indonesia through the Cisco Networking Academy. This program equipped me with fundamental knowledge of cybersecurity principles, including risk management, system threats and vulnerabilities, network security concepts, and data protection practices. The certificate serves as evidence that I have fulfilled all course requirements and assessments provided by the instructor."
+    describe: "Sertifikasi Cybersecurity Essentials yang diselenggarakan oleh Universitas Islam Indonesia bekerja sama dengan Cisco Networking Academy. Membuktikan kompetensi dalam prinsip-prinsip dasar keamanan siber, manajemen risiko, deteksi kerentanan sistem, dan proteksi data."
   }
 ];
 
 export const languagesData = [
-  { name: "Indonesian", level: "Native" },
+  { name: "Indonesian", level: "Native / Expert" },
   { name: "English", level: "Intermediate" }
 ];
 
 export const motivationText = `
-I am very enthusiastic about joining this internship program because I want to apply 
-the knowledge I have learned in college to the real working world. 
-I believe that internship experience will provide valuable insights into 
-the technology industry and help me develop professional skills. 
-I am ready to contribute with high dedication and great learning spirit.
+Saya adalah mahasiswa Teknik Informatika yang sangat antusias untuk terjun ke industri pengembangan perangkat lunak. Melalui pengalaman magang sebagai Full Stack Developer di PT PAL Indonesia, saya telah mempraktikkan keterampilan teknis dalam membangun Procurement Tracking System berskala enterprise dengan Laravel. Saya terbiasa mengelola seluruh siklus hidup pengembangan sistem mulai dari pemodelan database, perancangan mockup UI/UX di Figma, hingga implementasi kode backend dan frontend yang responsif, dalam kerangka kerja Agile. Saya siap berkontribusi secara profesional dengan dedikasi tinggi dan semangat belajar yang kuat.
 `;
