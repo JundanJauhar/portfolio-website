@@ -11,18 +11,20 @@ interface LanguageSkillsProps {
 
 export default function LanguageSkills({ languages }: LanguageSkillsProps) {
   return (
-    <section>
-      <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-        Language Skills
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+      <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-2 mb-4">
+        Language Proficiency
+      </h3>
+      <div className="space-y-4">
         {languages.map((language, index) => (
-          <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-gray-800">{language.name}</h3>
-            <p className="text-blue-600">{language.level}</p>
+          <div key={index} className="flex justify-between items-center">
+            <span className="font-semibold text-gray-700">{language.name}</span>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100/50">
+              {language.level}
+            </span>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
