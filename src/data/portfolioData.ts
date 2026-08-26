@@ -131,6 +131,12 @@ export const certificatesData = [
     year: "2025",
     img: "/cyber-sertifikat.jpg",
     describe: "Sertifikasi Cybersecurity Essentials yang diselenggarakan oleh Universitas Islam Indonesia bekerja sama dengan Cisco Networking Academy. Membuktikan kompetensi dalam prinsip-prinsip dasar keamanan siber, manajemen risiko, deteksi kerentanan sistem, dan proteksi data."
+  },
+  {
+    name: "Intership Certificate PT PAL Indonesia",
+    year: "2026",
+    img: "/Sertifikat PT PAL - Muhammad Jundan Jauhar.jpg",
+    describe: "Sertifikat magang yang diberikan oleh PT PAL Indonesia sebagai pengakuan atas partisipasi dan kontribusi dalam program magang, khususnya dalam pengembangan sistem informasi Procurement Tracking System. Proses magang mencakup perancangan, pengembangan, dan implementasi sistem berbasis web menggunakan Laravel dan MySQL, serta kolaborasi dalam tim pengembangan perangkat lunak."
   }
 ];
 
