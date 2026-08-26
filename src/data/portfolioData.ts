@@ -29,7 +29,7 @@ export const educationData = [
     institution: "Universitas Islam Indonesia",
     degree: "Bachelor of Informatics Engineering",
     period: "2022 - Present",
-    grade: "GPA: 3.42/4.00"
+    grade: "GPA: 3.44/4.00"
   },
   {
     institution: "MAS Sunan Pandanaran",
