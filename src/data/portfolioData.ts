@@ -3,14 +3,31 @@ export const userData = {
   name: "Muhammad Jundan Jauhar",
   title: "Programmer / Full Stack Developer",
   subtitle: "Informatics Student at Universitas Islam Indonesia",
-  img: "/Jundan.JPG"
+  img: "/Jundan.JPG",
+};
+
+export const profileData = {
+  description: "Saya adalah mahasiswa Teknik Informatika yang antusias membangun produk digital yang berguna. Saat magang di PT PAL Indonesia, saya mengembangkan Procurement Tracking System enterprise menggunakan Laravel dan terbiasa bekerja dalam ritme Agile.",
+  skills: [
+    "Laravel",
+    "PHP",
+    "MySQL",
+    "Bootstrap",
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  img: "/Jundan_magang.jpeg"
 };
 
 export const contactData = {
   email: "jundan87@gmail.com",
   phone: "0812-1551-0614",
   linkedin: "https://www.linkedin.com/in/jundan-jauhar-04a666259/",
-  github: "https://github.com/JundanJauhar"
+  github: "https://github.com/JundanJauhar",
+  instagram: "https://www.instagram.com/jundan_jhr/",
+  facebook: "https://www.facebook.com/JundanJauhar",
+  x: "https://x.com/JundanJauhar"
 };
 
 export const personalData = {
@@ -55,11 +72,11 @@ export const skillsData = {
 export const workExperienceData = [
   {
     role: "Magang: Pengembang Sistem (Full Stack Developer)",
-    company: "PT PAL Indonesia (BUMN Pertahanan Maritim)",
+    company: "PT PAL Indonesia (PERSERO)",
     division: "Divisi IT Transformation and Command Center",
     period: "Oktober 2025 - April 2026",
     responsibilities: [
-      "Merancang dan mengembangkan Procurement Tracking System berbasis web menggunakan Laravel dan MySQL untuk memantau proses pengadaan barang di 8 checkpoint dengan 7 peran pengguna berbeda (Supply Chain, Divisi Desain, QA, Sekretaris Direksi, Accounting, Vendor, dan Super Admin)",
+      "Merancang dan mengembangkan Procurement Tracking System berbasis web menggunakan Laravel dan MySQL untuk memantau proses pengadaan barang di 8 checkpoint dengan 7 peran pengguna berbeda (Supply Chain, Divisi Desain, QA, Sekretaris Direksi, Vendor, dan Super Admin)",
       "Membangun modul-modul fungsional seperti Evatek, Review Kontrak, Notifikasi, Summary Report, dan Log Activity untuk mendukung transparansi dan pelacakan status pengadaan secara real-time",
       "Merancang alur proses, ERD, dan wireframe menggunakan Miro, serta membuat high-fidelity UI/UX mockup menggunakan Figma sebelum masuk ke tahap pengembangan",
       "Berkolaborasi dengan tim developer dalam metodologi Agile, mencakup pembagian tugas sprint, code review, dan pengujian User Acceptance Test (UAT) bersama pengguna terkait",
@@ -85,25 +102,38 @@ export const projectsData = [
     title: "Tracking Procurement",
     description: "Sistem informasi tingkat enterprise untuk mengelola dan melacak seluruh proses pengadaan barang di PT PAL Indonesia secara end-to-end, mencakup 9 tahap alur pengadaan mulai dari pengajuan hingga penyelesaian kontrak dengan vendor.",
     technologies: ["Laravel", "PHP", "MySQL", "Bootstrap"],
-    link: "https://github.com/JundanJauhar/project-pal"
+    link: "https://github.com/JundanJauhar/project-pal",
+    images: [
+      "/procurement/Screenshot (1003).png",
+      "/procurement/Screenshot (1049).png",
+      "/procurement/Screenshot (1124).png",
+      "/procurement/Screenshot (1134).png",
+      "/procurement/Screenshot 2026-04-22 122526.png"
+    ]
   },
   {
     title: "JustDoSport",
     description: "Aplikasi web untuk pemesanan lapangan olahraga secara online, memungkinkan pengguna mencari, memilih jadwal, dan melakukan booking lapangan secara real-time.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    link: "https://github.com/JundanJauhar/justdosport"
-  },
-  {
-    title: "EcoMama",
-    description: "Aplikasi mobile berbasis Android untuk menukar botol plastik bekas menjadi poin, yang selanjutnya dapat digunakan pengguna untuk membeli produk yang tersedia di dalam aplikasi sebagai bentuk edukasi daur ulang.",
-    technologies: ["Kotlin", "Android Studio"],
-    link: "https://github.com/JundanJauhar/EcoMama"
+    link: "https://github.com/JundanJauhar/justdosport",
+    images: [
+      "/justdosport/Screenshot (1763).png",
+      "/justdosport/Screenshot (1764).png",
+      "/justdosport/Screenshot (1765).png",
+      "/justdosport/Screenshot (1766).png"
+    ]
   },
   {
     title: "TourGuide",
     description: "Website pertama penulis di bidang pengembangan web, dirancang sebagai layanan pemesanan jasa pemandu wisata (tour guide) secara online bagi wisatawan.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-    link: "https://github.com/JundanJauhar/TourGuide"
+    link: "https://github.com/JundanJauhar/TourGuide",
+    images: [
+      "/tourguide/Screenshot (1761).png",
+      "/tourguide/Screenshot (1762).png",
+      "/tourguide/Screenshot 2026-09-21 133120.png",
+      "/tourguide/Screenshot 2026-09-21 133134.png"
+    ]
   }
 ];
 
