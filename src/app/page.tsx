@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FaComments, FaCss3Alt, FaHtml5, FaJs, FaMobileScreenButton, FaPhp } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 import ContactSection from "../components/ContactSection";
 import {
   certificatesData,
@@ -22,6 +24,13 @@ const documentation = [
   { src: "/experienceWork/WhatsApp Image 2026-09-21 at 10.16.08.jpeg", label: "PT PAL / Collaboration" },
   { src: "/experienceWork/Jundan Foto.jpeg", label: "PT PAL / Internship" },
 ];
+
+const technologyIcons: Record<string, IconType> = {
+  HTML: FaHtml5,
+  CSS: FaCss3Alt,
+  JavaScript: FaJs,
+  PHP: FaPhp,
+};
 
 export default function Portfolio() {
   const [selectedCertificate, setSelectedCertificate] = useState<number | null>(null);
@@ -72,7 +81,7 @@ export default function Portfolio() {
 
       <section className="projects-section" id="projects">
         <div className="editorial-shell"><div className="section-label reveal"><span>03</span> SELECTED CASE STUDIES</div></div>
-        {projectsData.map((project, index) => <article className={`case-study case-study--${index + 1} ${index % 2 ? "reverse" : "forward"}`} key={project.title}><div className="editorial-shell"><div className="case-heading reveal"><span>THE PROJECT / 0{index + 1}</span><h2>{project.title}</h2><p>{project.description}</p></div><div className="case-layout"><div className="case-brief reveal"><small>ROLE / FULL STACK DEVELOPER</small><h3>{index === 0 ? "PROCUREMENT TRACKING SYSTEM" : project.title.toUpperCase()}</h3><ul>{project.technologies.map((tech) => <li key={tech}>{tech} implementation</li>)}<li>Responsive product experience</li><li>Clear workflow and user feedback</li></ul><a href={project.link} target="_blank" rel="noreferrer">Open all brief ↗</a></div><div className="screen-grid reveal">{project.images.map((image, screenIndex) => <figure className={`screen screen--${screenIndex + 1}`} key={image}><Image src={image} alt={`${project.title} screenshot ${screenIndex + 1}`} fill sizes="(max-width: 800px) 94vw, 280px" /></figure>)}</div></div></div></article>)}
+        {projectsData.map((project, index) => <article className={`case-study case-study--${index + 1} ${index % 2 ? "reverse" : "forward"}`} key={project.title}><div className="editorial-shell"><div className="case-heading reveal"><span>THE PROJECT / 0{index + 1}</span><h2>{project.title}</h2><p>{project.description}</p></div><div className="case-layout"><div className="case-brief reveal"><div className="case-brief__accent" /><div className="case-brief__meta"><small>ROLE / FULL STACK DEVELOPER</small><span>PERSONAL PROJECT</span></div><h3>{index === 0 ? "PROCUREMENT TRACKING SYSTEM" : project.title.toUpperCase()}</h3><ul>{project.technologies.map((tech) => { const Icon = technologyIcons[tech] ?? FaComments; return <li key={tech}><Icon aria-hidden="true" /> <span>{tech} implementation</span></li>; })}<li><FaMobileScreenButton aria-hidden="true" /> <span>Responsive product experience</span></li><li><FaComments aria-hidden="true" /> <span>Clear workflow and user feedback</span></li></ul><a href={project.link} target="_blank" rel="noreferrer">Open all brief <b aria-hidden="true">↗</b></a></div><div className="screen-grid reveal">{project.images.map((image, screenIndex) => <figure className={`screen screen--${screenIndex + 1}`} key={image}><Image src={image} alt={`${project.title} screenshot ${screenIndex + 1}`} fill sizes="(max-width: 800px) 94vw, 280px" /></figure>)}</div></div></div></article>)}
       </section>
 
       <section className="editorial-shell documentation-section">
