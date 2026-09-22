@@ -12,16 +12,15 @@ import {
   userData,
   workExperienceData,
 } from "../data/portfolioData";
-import { profile } from "console";
 
 const documentation = [
-  { src: "/experienceWork/On Boarding.jpeg"},
-  { src: "/experienceWork/Ruangan IT.jpeg" },
-  { src: "/experienceWork/Berkunjung ke divisi IMEX.jpeg"},
-  { src: "/experienceWork/User QA.jpeg"},
-  { src: "/experienceWork/testing user Supply Chain.jpeg" },
-  { src: "/experienceWork/WhatsApp Image 2026-09-21 at 10.16.08.jpeg"},
-  { src: "/experienceWork/Jundan Foto.jpeg"},
+  { src: "/experienceWork/On Boarding.jpeg", label: "PT PAL / Onboarding" },
+  { src: "/experienceWork/Ruangan IT.jpeg", label: "PT PAL / IT Division" },
+  { src: "/experienceWork/Berkunjung ke divisi IMEX.jpeg", label: "PT PAL / IMEX Visit" },
+  { src: "/experienceWork/User QA.jpeg", label: "PT PAL / QA Testing" },
+  { src: "/experienceWork/testing user Supply Chain.jpeg", label: "PT PAL / Supply Chain Testing" },
+  { src: "/experienceWork/WhatsApp Image 2026-09-21 at 10.16.08.jpeg", label: "PT PAL / Collaboration" },
+  { src: "/experienceWork/Jundan Foto.jpeg", label: "PT PAL / Internship" },
 ];
 
 export default function Portfolio() {
