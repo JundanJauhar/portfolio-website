@@ -60,7 +60,9 @@ export default function Portfolio() {
         <div className="intro-card reveal">
           <div className="intro-photo"><Image src={profileData.img} alt="Jundan Jauhar" fill sizes="300px" /><span className="photo-index">01 — PROFILE</span></div>
           <div className="intro-hi">Hi<span>,</span><small>nice to meet you.</small></div>
-          <div className="intro-copy"><p>Saya mahasiswa Teknik Informatika yang antusias membangun produk digital yang berguna. Saat magang di PT PAL Indonesia, saya mengembangkan <strong>Procurement Tracking System</strong> enterprise menggunakan <strong>Laravel</strong> dan terbiasa bekerja dalam ritme <strong>Agile</strong>.</p><p className="intro-note">From database modelling to responsive front-end — I enjoy making complex systems feel simple.</p><div className="status-pill"><i /><span /><span /><span /> FULL STACK DEVELOPER</div></div>
+          <div className="intro-copy"><p>Saya mahasiswa Teknik Informatika yang percaya bahwa produk digital yang baik lahir dari kolaborasi yang baik. Selama magang di PT PAL Indonesia, saya belajar bahwa membangun sistem enterprise seperti Procurement Tracking System bukan sekadar soal menulis kode, tapi juga soal bagaimana mendengarkan kebutuhan tim, beradaptasi cepat dengan alur kerja baru, dan menjaga komunikasi tetap jelas di tengah ritme Agile yang serba cepat.
+
+            Saya senang bekerja dalam tim lintas divisi, mudah membaur dengan lingkungan baru, dan terbiasa mengambil inisiatif untuk memimpin diskusi atau menyelesaikan hambatan ketika dibutuhkan. Bagi saya, kemampuan teknis penting, tapi kemampuan untuk bekerja sama, beradaptasi, dan berkomunikasi dengan baik adalah yang membuat sebuah tim benar-benar solid..</p><p className="intro-note">From database modelling to responsive front-end — I enjoy making complex systems feel simple.</p><div className="status-pill"><i /><span /><span /><span /> FULL STACK DEVELOPER</div></div>
         </div>
       </section>
 
