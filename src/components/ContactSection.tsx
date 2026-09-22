@@ -23,11 +23,11 @@ interface MagneticProps {
 }
 
 const contacts: ContactItem[] = [
-  { label: "GITHUB", value: "@username", href: "https://github.com/username", action: "VIEW PROFILE", platform: "github", className: "social-card--github", Icon: FaGithub },
-  { label: "LINKEDIN", value: "Professional profile", href: "https://www.linkedin.com/in/username", action: "CONNECT", platform: "linkedin", className: "social-card--linkedin", Icon: FaLinkedin },
-  { label: "INSTAGRAM", value: "@username", href: "https://www.instagram.com/username", action: "FOLLOW", platform: "instagram", className: "social-card--instagram", Icon: FaInstagram },
-  { label: "WHATSAPP", value: "Let's have a conversation", href: "https://wa.me/620000000000", action: "CHAT", platform: "whatsapp", className: "social-card--whatsapp", Icon: FaWhatsapp },
-  { label: "EMAIL", value: "email@example.com", href: "mailto:email@example.com", action: "SEND EMAIL", platform: "email", className: "social-card--email", Icon: MdEmail },
+  { label: "GITHUB", value: "JundanJauhar", href: "https://github.com/JundanJauhar", action: "VIEW PROFILE", platform: "github", className: "social-card--github", Icon: FaGithub },
+  { label: "LINKEDIN", value: "Jundan Jauhar", href: "https://www.linkedin.com/in/jundan-jauhar-04a666259/", action: "CONNECT", platform: "linkedin", className: "social-card--linkedin", Icon: FaLinkedin },
+  { label: "INSTAGRAM", value: "jundan_jhr", href: "https://www.instagram.com/jundan_jhr/", action: "FOLLOW", platform: "instagram", className: "social-card--instagram", Icon: FaInstagram },
+  { label: "WHATSAPP", value: "081215510614", href: "https://wa.me/6281215510614", action: "CHAT", platform: "whatsapp", className: "social-card--whatsapp", Icon: FaWhatsapp },
+  { label: "EMAIL", value: "jundan87@gmail.com", href: "mailto:jundan87@gmail.com", action: "SEND EMAIL", platform: "email", className: "social-card--email", Icon: MdEmail },
 ];
 
 function Magnetic({ children, className, strength = 12 }: MagneticProps) {
