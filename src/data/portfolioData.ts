@@ -22,7 +22,7 @@ export const profileData = {
 
 export const contactData = {
   email: "jundan87@gmail.com",
-  phone: "0812-1551-0614",
+  phone: "081215510614",
   linkedin: "https://www.linkedin.com/in/jundan-jauhar-04a666259/",
   github: "https://github.com/JundanJauhar",
   instagram: "https://www.instagram.com/jundan_jhr/",
